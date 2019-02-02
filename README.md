@@ -2,5 +2,9 @@ Finding how to use functions in wasm at vue file?
 
 https://stackoverflow.com/questions/43608457/how-to-import-functions-from-different-js-file-in-a-vuewebpackvue-loader-proje
 
-https://github.com/vuejs/vue-cli/issues/763
 
+What is wasm-loader?
+
+https://github.com/vuejs/vue-cli/issues/763
+* https://github.com/greenpdx/vueopencvjs/blob/master/src/components/HelloWorld.vue
+* https://github.com/greenpdx/vueopencvjs/blob/master/src/components/add.es6
