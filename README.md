@@ -1,6 +1,25 @@
+# Practice for using WASM within Vue.js
+
+## Run
+```sh
+$ cd wasm
+$ go build
+
+$ cp (or copy) calc.wasm ../vue/public/
+
+$ cd ..
+
+$ cd vue
+$ npm install
+$ npm run serve
+```
+
+## Sundries
+
 Finding how to use functions in wasm at vue file?
 
-https://stackoverflow.com/questions/43608457/how-to-import-functions-from-different-js-file-in-a-vuewebpackvue-loader-proje
+* https://medium.com/@brockreece/vue-webassembly-1a09e38d0389
+* https://stackoverflow.com/questions/43608457/how-to-import-functions-from-different-js-file-in-a-vuewebpackvue-loader-proje
 
 
 What is wasm-loader?
