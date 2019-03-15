@@ -8,17 +8,17 @@
   <link rel="icon" href="<%= BASE_URL %>favicon.ico">
   <script src="<%= BASE_URL %>wasm_exec.js"></script>
   <script>
-    const go = new Go()
-    let mod, inst
+    // const go = new Go()
+    // let mod, inst
 
-    async function runWasm(wasmobj) {
-      mod = wasmobj.module
-      inst = wasmobj.instance
+    // async function runWasm(wasmobj) {
+    //   mod = wasmobj.module
+    //   inst = wasmobj.instance
 
-      await go.run(inst)
-    }
+    //   await go.run(inst)
+    // }
 
-    WebAssembly.instantiateStreaming(fetch("calc.wasm"), go.importObject).then((result) => { runWasm(result) })
+    // WebAssembly.instantiateStreaming(fetch("calc.wasm"), go.importObject).then((result) => { runWasm(result) })
 
   </script>
   <title>vue-wasm-go</title>

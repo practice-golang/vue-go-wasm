@@ -1,9 +1,13 @@
 # Practice for using WASM within Vue.js
 
+# Not work Go 1.12 wasm cannot run with Vue.js
+
 ## Run
 ```sh
 $ cd wasm
-$ go build
+set GOARCH=wasm
+set GOOS=js
+$ go build -o calc.wasm
 
 $ cp (or copy) calc.wasm ../vue/public/
 
