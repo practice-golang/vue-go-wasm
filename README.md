@@ -24,6 +24,9 @@ $ npm run serve
 ## Not work with
 * `Electron`, `nodeJS`
 
+## wasm_exec.js
+Few modified from `$GOROOT/misc/wasm/wasm_exec.js`
+
 ## Problem
 * Lint ignore is always needed. - like `// eslint-disable-next-line`
 * How can I use `go wasm file` with vue.prototype? - like `Vue.prototype.$go = { go };`
