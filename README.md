@@ -1,6 +1,8 @@
-# Practice for using WASM within Vue.js
+# Go 1.12 WASM Vue.js practice
 
-# Not work Go 1.12 wasm cannot run with Vue.js
+## Need
+* `Vue-Cli3`
+* `Go 1.12`
 
 ## Run
 ```sh
@@ -9,7 +11,7 @@ set GOARCH=wasm
 set GOOS=js
 $ go build -o calc.wasm
 
-$ cp (or copy) calc.wasm ../vue/public/
+$ cp (or copy) calc.wasm ../vue/public/ (or ../vue/assets)
 
 $ cd ..
 
@@ -18,16 +20,10 @@ $ npm install
 $ npm run serve
 ```
 
-## Sundries
+## Not work with
+* `Electron`, `nodeJS`
 
-Finding how to use functions in wasm at vue file?
-
-* https://medium.com/@brockreece/vue-webassembly-1a09e38d0389
-* https://stackoverflow.com/questions/43608457/how-to-import-functions-from-different-js-file-in-a-vuewebpackvue-loader-proje
-
-
-What is wasm-loader?
-
-https://github.com/vuejs/vue-cli/issues/763
-* https://github.com/greenpdx/vueopencvjs/blob/master/src/components/HelloWorld.vue
-* https://github.com/greenpdx/vueopencvjs/blob/master/src/components/add.es6
+## Problem
+* Lint ignore is always needed. - like `// eslint-disable-next-line`
+* How can I use `go wasm file` with vue.prototype? - like `Vue.prototype.$go = { go };`
+* `Google Chrome` (improved but,) still have problem to <b>die</b> when refrech sometimes.

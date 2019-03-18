@@ -1,61 +1,89 @@
 package main // import "calc"
 
 import (
-	"fmt"
 	"strconv"
 	"syscall/js"
 )
 
-// func add(i []js.Value) {
-// 	value1 := js.Global().Get("document").Call("getElementById", i[0].String()).Get("value").String()
-// 	value2 := js.Global().Get("document").Call("getElementById", i[1].String()).Get("value").String()
+var global = js.Global()
 
-// 	int1, _ := strconv.Atoi(value1)
-// 	int2, _ := strconv.Atoi(value2)
-
-// 	js.Global().Get("document").Call("getElementById", i[2].String()).Set("value", int1+int2)
-// }
-
-func subtract(i []js.Value) {
-	value1 := js.Global().Get("document").Call("getElementById", i[0].String()).Get("value").String()
-	value2 := js.Global().Get("document").Call("getElementById", i[1].String()).Get("value").String()
-
+func add(this js.Value, i []js.Value) interface{} {
+	value1 := i[0].String()
+	value2 := i[1].String()
 	int1, _ := strconv.Atoi(value1)
 	int2, _ := strconv.Atoi(value2)
 
-	js.Global().Get("document").Call("getElementById", i[2].String()).Set("value", int1-int2)
+	if value1 == "" {
+		int1 = 0
+	}
+	if value2 == "" {
+		int2 = 0
+	}
+
+	result := int1 + int2
+
+	return result
 }
 
-func registerAdd() {
-	add := js.FuncOf(func(this js.Value, i []js.Value) interface{} {
-		fmt.Println(i)
+func sub(this js.Value, i []js.Value) interface{} {
+	value1 := i[0].String()
+	value2 := i[1].String()
+	int1, _ := strconv.Atoi(value1)
+	int2, _ := strconv.Atoi(value2)
 
-		value1 := i[0].String()
-		value2 := i[1].String()
+	if value1 == "" {
+		int1 = 0
+	}
+	if value2 == "" {
+		int2 = 0
+	}
 
-		int1, _ := strconv.Atoi(value1)
-		int2, _ := strconv.Atoi(value2)
+	result := int1 - int2
 
-		fmt.Println(int1 + int2)
-
-		// return nil
-		return (1 + 2)
-	})
-	js.Global().Call("add", add)
-	// add.Invoke()
+	return result
 }
 
-// func registerCallbacks() {
-// 	js.Global().Set("add", js.NewCallback(add))
-// 	js.Global().Set("subtract", js.NewCallback(subtract))
-// }
+func multi(this js.Value, i []js.Value) interface{} {
+	value1 := i[0].String()
+	value2 := i[1].String()
+	int1, _ := strconv.Atoi(value1)
+	int2, _ := strconv.Atoi(value2)
+
+	if value1 == "" {
+		int1 = 0
+	}
+	if value2 == "" {
+		int2 = 0
+	}
+
+	result := int1 * int2
+
+	return result
+}
+
+func divi(this js.Value, i []js.Value) interface{} {
+	value1 := i[0].String()
+	value2 := i[1].String()
+	int1, _ := strconv.Atoi(value1)
+	int2, _ := strconv.Atoi(value2)
+
+	if value2 == "" || value2 == "0" {
+		return "infinite"
+	}
+
+	result := int1 / int2
+
+	return result
+}
 
 func main() {
 	c := make(chan struct{}, 0)
 
-	println("WASM Go Initialized")
+	println("Go Web Assembly Ready")
 
-	// registerCallbacks()
-	registerAdd()
+	global.Set("add", js.FuncOf(add))
+	global.Set("sub", js.FuncOf(sub))
+	global.Set("multi", js.FuncOf(multi))
+	global.Set("divi", js.FuncOf(divi))
 	<-c
 }

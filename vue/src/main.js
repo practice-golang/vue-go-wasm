@@ -1,22 +1,18 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import goWasm from './wasm_exec'
-// const go = require('./wasm_exec')
-// const wasm = require('./wasm_exec')
+import wasm from './wasm_exec'
 
-// const go = new wasm()
-const go = new goWasm()
-// eslint-disable-next-line 
-// let mod, inst
+const go = new wasm()
+// const go = new Go()
 let inst
-WebAssembly.instantiateStreaming(fetch("calc.wasm"), go.importObject).then(async (result) => {
-  // mod = result.module
-  inst = result.instance
-  await go.run(inst)
-})
+WebAssembly.instantiateStreaming(fetch("calc.wasm"), go.importObject)
+  .then(async (result) => {
+    inst = result.instance
+    await go.run(inst)
+  })
 
-Vue.prototype.$go = { go };
+// Vue.prototype.$go = { go }; // How to make it??? T^T
 
 Vue.config.productionTip = false
 
