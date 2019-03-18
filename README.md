@@ -1,4 +1,5 @@
 # Go 1.12 WASM Vue.js practice
+A `WASM Calculator` practice within `Vue.js`
 
 ## Need
 * `Vue-Cli3`
