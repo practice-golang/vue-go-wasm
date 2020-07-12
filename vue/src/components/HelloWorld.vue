@@ -8,7 +8,6 @@
     =
     <input type="text" v-model="calcResult" disabled />
     <hr />
-    <button @click="hello();">Hello world</button>
     <button @click="add();" id="addButton">Add</button>
     <button @click="sub();" id="subButton">Sub</button>
     <button @click="mul();" id="subButton">Mult</button>
