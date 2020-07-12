@@ -34,29 +34,26 @@ export default {
   created() { },
   mounted() { },
   methods: {
-    hello() {
-      this.$root.rootAdd(this.value1, this.value2)
-    },
-    async add() {
+    add() {
       let values = [this.value1, this.value2]
 
       // // eslint-disable-next-line
       this.calcResult = waAdd(...values)
       this.operator = "+"
     },
-    async sub() {
+    sub() {
       let values = [this.value1, this.value2]
 
       this.calcResult = waSub(...values)
       this.operator = "-"
     },
-    async mul() {
+    mul() {
       let values = [this.value1, this.value2]
 
       this.calcResult = waMulti(...values)
       this.operator = "*"
     },
-    async div() {
+    div() {
       let values = [this.value1, this.value2]
 
       this.calcResult = waDivi(...values)
