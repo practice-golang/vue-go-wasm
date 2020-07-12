@@ -44,7 +44,7 @@ export default {
     sub() {
       let values = [this.value1, this.value2]
 
-      this.calcResult = waSub(...values)
+      this.calcResult = waSub(...values) // // eslint-disable-line
       this.operator = "-"
     },
     mul() {
