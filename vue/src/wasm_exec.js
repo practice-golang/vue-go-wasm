@@ -21,9 +21,9 @@ if (typeof global !== "undefined") {
 	throw new Error("cannot export Go (neither global, window nor self is defined)");
 }
 
-if (!global.require && typeof require !== "undefined") {
-	global.require = require;
-}
+// if (!global.require && typeof require !== "undefined") {
+// 	global.require = require;
+// }
 
 const enosys = () => {
 	const err = new Error("not implemented");
