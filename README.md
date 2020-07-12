@@ -1,16 +1,16 @@
-# Go 1.12 WASM Vue.js practice
+# Go 1.14 WASM Vue.js practice
 A `WASM Calculator` practice within `Vue.js`
 
 ## Need
 * `Vue-Cli3`
-* `Go 1.12`
+* `Go 1.14`
 
 ## Run
 ```sh
 $ cd wasm
 set GOARCH=wasm
 set GOOS=js
-$ go build -o calc.wasm
+$ go build
 
 $ cp (or copy) calc.wasm ../vue/public/ (or ../vue/assets)
 
@@ -21,13 +21,14 @@ $ npm install
 $ npm run serve
 ```
 
-## Not work with
-* `Electron`, `nodeJS`
+## Server
+* A http server for testing `index.html` in `wasm` folder
+
+## Not tested with
+* `Electron`
 
 ## wasm_exec.js
 Few modified from `$GOROOT/misc/wasm/wasm_exec.js`
 
 ## Problem
-* Lint ignore is always needed. - like `// eslint-disable-next-line`
-* How can I use `go wasm file` with vue.prototype? - like `Vue.prototype.$go = { go };`
-* `Google Chrome` (improved but,) still have problem to <b>die</b> when refrech sometimes.
+* Cannot make to load golang codes before vue codes loading. ES-Lint ignore set are always needed like `// eslint-disable-next-line` or `/* global function_name */`

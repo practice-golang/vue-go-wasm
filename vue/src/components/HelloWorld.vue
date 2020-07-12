@@ -2,11 +2,13 @@
   <div class="hello">
     <h1>WASM Arithmatic ^-^</h1>
 
-    <input type="text" v-model="value1"> <span>{{operator}}</span>
-    <input type="text" v-model="value2">
+    <input type="text" v-model="value1" />
+    <span>{{operator}}</span>
+    <input type="text" v-model="value2" />
     =
-    <input type="text" v-model="calcResult" disabled>
-    <hr>
+    <input type="text" v-model="calcResult" disabled />
+    <hr />
+    <button @click="hello();">Hello world</button>
     <button @click="add();" id="addButton">Add</button>
     <button @click="sub();" id="subButton">Sub</button>
     <button @click="mul();" id="subButton">Mult</button>
@@ -15,6 +17,8 @@
 </template>
 
 <script>
+// /*eslint no-undef: "off"*/
+/* global waAdd, waSub, waMulti, waDivi */
 export default {
   name: 'HelloWorld',
   props: {
@@ -28,39 +32,35 @@ export default {
       calcResult: ""
     }
   },
+  created() { },
+  mounted() { },
   methods: {
+    hello() {
+      this.$root.rootAdd(this.value1, this.value2)
+    },
     async add() {
       let values = [this.value1, this.value2]
 
-      // eslint-disable-next-line
-      // this.result = await this.$go.add(...values)
-      // eslint-disable-next-line
-      this.calcResult = await add(...values)
-
+      // // eslint-disable-next-line
+      this.calcResult = waAdd(...values)
       this.operator = "+"
     },
     async sub() {
       let values = [this.value1, this.value2]
 
-      // eslint-disable-next-line
-      this.calcResult = await sub(...values)
-
+      this.calcResult = waSub(...values)
       this.operator = "-"
     },
     async mul() {
       let values = [this.value1, this.value2]
 
-      // eslint-disable-next-line
-      this.calcResult = await multi(...values)
-
+      this.calcResult = waMulti(...values)
       this.operator = "*"
     },
     async div() {
       let values = [this.value1, this.value2]
 
-      // eslint-disable-next-line
-      this.calcResult = await divi(...values)
-
+      this.calcResult = waDivi(...values)
       this.operator = "/"
     }
   }

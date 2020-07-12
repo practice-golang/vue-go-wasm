@@ -22,30 +22,44 @@ license that can be found in the LICENSE file.
 		}
 
 		const go = new Go();
-		let mod, inst;
+
+		let inst;
 		WebAssembly.instantiateStreaming(fetch("calc.wasm"), go.importObject).then(async (result) => {
-			mod = result.module;
 			inst = result.instance;
 			await go.run(inst)
 		});
 
-		async function run() {
-			console.clear();
-			await go.run(inst);
-			inst = await WebAssembly.instantiate(mod, go.importObject); // reset instance
+		async function doAdd() {
+			let v1 = document.getElementById("value1").value
+			let v2 = document.getElementById("value2").value
+
+			let result = await waAdd(...[v1, v2])
+			console.log(result)
+
+			document.getElementById("result").value = result
 		}
+
+		async function doSub() {
+				let v1 = document.getElementById("value1").value
+				let v2 = document.getElementById("value2").value
+
+				let result = await waSub(...[v1, v2])
+				console.log(result)
+
+				document.getElementById("result").value = result
+			}
 	</script>
 
 	<h1>Arithmatic ^-^</h1>
 
 	<input type="text" id="value1" />
 
-	<button onClick="add('value1', 'value2', 'result');" id="addButton">Add</button>
-	<button onClick="subtract('value1', 'value2', 'result');" id="subtractButton">Subtract</button>
+	<button onClick="doAdd()" id="addButton">Add</button>
+	<button onClick="doSub();" id="subtractButton">Subtract</button>
 
 	<input type="text" id="value2" />
 
-	= <input type="text" id="result" disabled>
+	= <output id="result"></output>
 </body>
 
 </html>

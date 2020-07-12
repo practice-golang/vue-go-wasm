@@ -1,11 +1,11 @@
-package main // import "calc"
+package main // import "calc.wasm"
 
 import (
 	"strconv"
 	"syscall/js"
 )
 
-var global = js.Global()
+var jb = js.Global()
 
 func add(this js.Value, i []js.Value) interface{} {
 	value1 := i[0].String()
@@ -79,11 +79,12 @@ func divi(this js.Value, i []js.Value) interface{} {
 func main() {
 	c := make(chan struct{}, 0)
 
+	jb.Set("waAdd", js.FuncOf(add))
+	jb.Set("waSub", js.FuncOf(sub))
+	jb.Set("waMulti", js.FuncOf(multi))
+	jb.Set("waDivi", js.FuncOf(divi))
+
 	println("Go Web Assembly Ready")
 
-	global.Set("add", js.FuncOf(add))
-	global.Set("sub", js.FuncOf(sub))
-	global.Set("multi", js.FuncOf(multi))
-	global.Set("divi", js.FuncOf(divi))
 	<-c
 }

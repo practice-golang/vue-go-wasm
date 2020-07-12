@@ -1,3 +1,3 @@
-module calc
+module calc.wasm
 
-go 1.12
+go 1.14
