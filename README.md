@@ -32,3 +32,4 @@ Few modified from `$GOROOT/misc/wasm/wasm_exec.js`
 
 ## Problem
 * Cannot make to load golang codes before vue codes loading. ES-Lint ignore set are always needed like `// eslint-disable-next-line` or `/* global function_name */`
+  * Now giveup this :-D - https://stackoverflow.com/questions/48015777/cant-call-webassembly-js-api-from-reactjs-component
