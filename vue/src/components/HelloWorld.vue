@@ -16,7 +16,7 @@
 </template>
 
 <script>
-/* eslint no-undef: "off"*/
+// /* eslint no-undef: "off"*/
 // /* global waAdd, waSub, waMulti, waDivi */
 export default {
   name: 'HelloWorld',
@@ -45,7 +45,7 @@ export default {
     sub() {
       let values = [this.value1, this.value2]
 
-      this.calcResult = waSub(...values) // // eslint-disable-line
+      // this.calcResult = waSub(...values) // // eslint-disable-line
       this.calcResult = this.$go.sub(...values)
       this.operator = "-"
     },
