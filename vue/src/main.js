@@ -6,8 +6,9 @@ import App from './App.vue'
 /* eslint no-undef: "off"*/
 const go = new Go()
 WebAssembly.instantiateStreaming(fetch("calc.wasm"), go.importObject)
-  .then(async (result) => {
-    // await go.run(result.instance)
+  // .then(async (result) => {
+  // await go.run(result.instance)
+  .then((result) => {
     go.run(result.instance)
     // console.log(waAdd(...Array("2", "1")))
 
