@@ -16,8 +16,8 @@
 </template>
 
 <script>
-// /*eslint no-undef: "off"*/
-/* global waAdd, waSub, waMulti, waDivi */
+/* eslint no-undef: "off"*/
+// /* global waAdd, waSub, waMulti, waDivi */
 export default {
   name: 'HelloWorld',
   props: {
@@ -38,25 +38,29 @@ export default {
       let values = [this.value1, this.value2]
 
       // // eslint-disable-next-line
-      this.calcResult = waAdd(...values)
+      // this.calcResult = waAdd(...values)
+      this.calcResult = this.$go.add(...values)
       this.operator = "+"
     },
     sub() {
       let values = [this.value1, this.value2]
 
       this.calcResult = waSub(...values) // // eslint-disable-line
+      this.calcResult = this.$go.sub(...values)
       this.operator = "-"
     },
     mul() {
       let values = [this.value1, this.value2]
 
-      this.calcResult = waMulti(...values)
+      // this.calcResult = waMulti(...values)
+      this.calcResult = this.$go.multi(...values)
       this.operator = "*"
     },
     div() {
       let values = [this.value1, this.value2]
 
-      this.calcResult = waDivi(...values)
+      // this.calcResult = waDivi(...values)
+      this.calcResult = this.$go.divi(...values)
       this.operator = "/"
     }
   }
