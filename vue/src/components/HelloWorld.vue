@@ -12,12 +12,11 @@
     <button @click="sub();" id="subButton">Sub</button>
     <button @click="mul();" id="subButton">Mult</button>
     <button @click="div();" id="subButton">Div</button>
+    
   </div>
 </template>
 
 <script>
-// /* eslint no-undef: "off"*/
-// /* global waAdd, waSub, waMulti, waDivi */
 export default {
   name: 'HelloWorld',
   props: {
@@ -35,32 +34,19 @@ export default {
   mounted() { },
   methods: {
     add() {
-      let values = [this.value1, this.value2]
-
-      // // eslint-disable-next-line
-      // this.calcResult = waAdd(...values)
-      this.calcResult = this.$go.add(...values)
+      this.calcResult = this.$go.add(this.value1, this.value2)
       this.operator = "+"
     },
     sub() {
-      let values = [this.value1, this.value2]
-
-      // this.calcResult = waSub(...values) // // eslint-disable-line
-      this.calcResult = this.$go.sub(...values)
+      this.calcResult = this.$go.sub(this.value1, this.value2)
       this.operator = "-"
     },
     mul() {
-      let values = [this.value1, this.value2]
-
-      // this.calcResult = waMulti(...values)
-      this.calcResult = this.$go.multi(...values)
+      this.calcResult = this.$go.multi(...[this.value1, this.value2])
       this.operator = "*"
     },
     div() {
-      let values = [this.value1, this.value2]
-
-      // this.calcResult = waDivi(...values)
-      this.calcResult = this.$go.divi(...values)
+      this.calcResult = this.$go.divi(...[this.value1, this.value2])
       this.operator = "/"
     }
   }
